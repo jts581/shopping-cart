@@ -68,18 +68,24 @@ def to_usd(my_price):
 
 ### INFO CAPTURE
 
+total_price = 0
+
 while True:
     product_id = input("Please input the product identifier, or 'DONE' if there are no more items:") #> this is a string
     #> "DONE"
     if product_id == "DONE":
         break
     
-    matching_products = [p for p in products if int(p["id"]) == int(product_id)]
-    matching_product = matching_products[0]
-    print("Selected product: " + matching_product["name"] + ": " + to_usd(matching_product["price"]))
+    else:
+        matching_products = [p for p in products if int(p["id"]) == int(product_id)]
+        matching_product = matching_products[0]
+        total_price = total_price + matching_product["price"]
+        print("Selected product: " + matching_product["name"] + ": " + to_usd(matching_product["price"]))
     
 
 #print(product_id)
 #print(type(product_id))
 
 ### INFO OUTPUT
+
+print("Total price: " + to_usd(total_price))
