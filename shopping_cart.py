@@ -69,6 +69,12 @@ def to_usd(my_price):
 ### INFO CAPTURE
 product_id = input("Please input the product identifier, or 'DONE' if there are no more items:") #> this is a string
 
-print(product_id)
-print(type(product_id))
+matching_products = [p for p in products if int(p["id"]) == int(product_id)]
+matching_product = matching_products[0]
+print("Selected product: " + matching_product["name"] + ": " + to_usd(matching_product["price"]))
+print(type(matching_product))
+
+#print(product_id)
+#print(type(product_id))
+
 ### INFO OUTPUT
