@@ -69,6 +69,7 @@ def to_usd(my_price):
 ### INFO CAPTURE
 
 total_price = 0
+product_ids = []
 
 while True:
     product_id = input("Please input the product identifier, or 'DONE' if there are no more items:") #> this is a string
@@ -77,15 +78,25 @@ while True:
         break
     
     else:
-        matching_products = [p for p in products if int(p["id"]) == int(product_id)]
-        matching_product = matching_products[0]
-        total_price = total_price + matching_product["price"]
-        print("Selected product: " + matching_product["name"] + ": " + to_usd(matching_product["price"]))
+        #matching_products = [p for p in products if int(p["id"]) == int(product_id)]
+        #matching_product = matching_products[0]
+        #total_price = total_price + matching_product["price"]
+        #print("Selected product: " + matching_product["name"] + ": " + to_usd(matching_product["price"]))
+        product_ids.append(product_id)
     
 
 #print(product_id)
 #print(type(product_id))
 
 ### INFO OUTPUT
+print("--------------")
+print("JAKE'S PY SHOP")
+print("--------------")
 
-print("Total price: " + to_usd(total_price))
+for product_id in product_ids:
+        matching_products = [p for p in products if str(p["id"]) == str(product_id)]
+        matching_product = matching_products[0]
+        total_price = total_price + matching_product["price"]
+        print("SELECTED PRODUCT: " + str(matching_product["name"]) + ": " + to_usd(matching_product["price"]))
+
+print("TOTAL PRICE: " + to_usd(total_price))
