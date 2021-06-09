@@ -110,5 +110,14 @@ for product_id in product_ids:
         total_price = total_price + matching_product["price"]
         print("-",str(matching_product["name"]) + ": " + to_usd(matching_product["price"]))
 
+tax = 0.0875 * total_price
+plus_tax = [tax, total_price]
+grand_total = sum(plus_tax)
+
 print("--------------")
-print("SUBTOTAL: " + to_usd(total_price))
+print("SUBTOTAL: ", to_usd(total_price))
+print("TAX: ", to_usd(tax))
+print("TOTAL: ", to_usd(grand_total))
+print("--------------")
+print("THANKS FOR STOPPING PY!")
+print("--------------")
