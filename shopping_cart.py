@@ -64,4 +64,11 @@ def to_usd(my_price):
 
 #The program should be able to process multiple shopping cart items of the same kind, but need not display any groupings or 
 # aggregations of those items (although it may optionally do so).
-print(products)
+
+
+### INFO CAPTURE
+product_id = input("Please input the product identifier, or 'DONE' if there are no more items:") #> this is a string
+
+print(product_id)
+print(type(product_id))
+### INFO OUTPUT
