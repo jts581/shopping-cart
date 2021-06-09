@@ -91,12 +91,24 @@ while True:
 ### INFO OUTPUT
 print("--------------")
 print("JAKE'S PY SHOP")
+print("www.eatmypy.com")
 print("--------------")
 
+from datetime import datetime
+
+now = datetime.now()
+
+checkout_time = now.strftime("%m/%d/%y %I:%M:%S %p")
+
+print("CHECKOUT TIME:",checkout_time)
+print("--------------")
+
+print("ITEMS: ")
 for product_id in product_ids:
         matching_products = [p for p in products if str(p["id"]) == str(product_id)]
         matching_product = matching_products[0]
         total_price = total_price + matching_product["price"]
-        print("SELECTED PRODUCT: " + str(matching_product["name"]) + ": " + to_usd(matching_product["price"]))
+        print("-",str(matching_product["name"]) + ": " + to_usd(matching_product["price"]))
 
-print("TOTAL PRICE: " + to_usd(total_price))
+print("--------------")
+print("SUBTOTAL: " + to_usd(total_price))
