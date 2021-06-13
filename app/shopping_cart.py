@@ -1,3 +1,8 @@
+import os
+from dotenv import load_dotenv
+load_dotenv()
+tax_rate = float(os.getenv("TAXRATE"))
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -73,10 +78,15 @@ product_ids = []
 
 while True:
     product_id = input("Please input the product identifier, or 'DONE' if there are no more items:") #> this is a string
+    
+    # Validate item exists
+    #if product_id not in products["id"]:
+    #   print("THAT ITEM DOES NOT EXIST, PLEASE ENTER AN ID BETWEEN 1-20")
+    
     #> "DONE"
     if product_id == "DONE":
         break
-    
+
     else:
         #matching_products = [p for p in products if int(p["id"]) == int(product_id)]
         #matching_product = matching_products[0]
@@ -89,6 +99,7 @@ while True:
 #print(type(product_id))
 
 ### INFO OUTPUT
+
 print("--------------")
 print("JAKE'S PY SHOP")
 print("www.eatmypy.com")
@@ -110,9 +121,8 @@ for product_id in product_ids:
         total_price = total_price + matching_product["price"]
         print("-",str(matching_product["name"]) + ": " + to_usd(matching_product["price"]))
 
-tax = 0.0875 * total_price
-incl_tax = [tax, total_price]
-grand_total = sum(incl_tax)
+tax = tax_rate * total_price
+grand_total = sum([tax, total_price])
 
 print("--------------")
 print("SUBTOTAL: ", to_usd(total_price))
@@ -121,3 +131,10 @@ print("TOTAL: ", to_usd(grand_total))
 print("--------------")
 print("THANKS FOR STOPPING PY!")
 print("--------------")
+
+## EMAIL RECEIPT
+
+#email_option = input("WOULD YOU LIKE A RECEIPT? (Y/N):")
+#    if email_option == "N":
+#        break
+
