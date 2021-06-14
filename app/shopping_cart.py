@@ -11,7 +11,6 @@ load_dotenv()
 SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY", default="OOPS, please set env var called 'SENDGRID_API_KEY'")
 SENDGRID_TEMPLATE_ID = os.getenv("SENDGRID_TEMPLATE_ID", default="OOPS, please set env var called 'SENDGRID_TEMPLATE_ID'")
 SENDER_ADDRESS = os.getenv("SENDER_ADDRESS", default="OOPS, please set env var called 'SENDER_ADDRESS'")
-RECEIVER_ADDRESS = os.getenv("RECEIVER_ADDRESS", default="OOPS, please set env var called 'RECEIVER_ADDRESS'")
 
 # Loading tax rate env variable  
 tax_rate = float(os.getenv("TAXRATE"))
@@ -131,7 +130,7 @@ if email_option == "Y":
     client = SendGridAPIClient(SENDGRID_API_KEY)
     print("CLIENT:", type(client))
 
-    message = Mail(from_email=SENDER_ADDRESS, to_emails=RECEIVER_ADDRESS)
+    message = Mail(from_email=SENDER_ADDRESS, to_emails=SENDER_ADDRESS)
     message.template_id = SENDGRID_TEMPLATE_ID
     message.dynamic_template_data = template_data
     print("MESSAGE:", type(message))
