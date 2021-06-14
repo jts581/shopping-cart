@@ -11,3 +11,5 @@ cd shopping-cart
 
 Run the program 
 python shopping_cart.py
+
+Configure your local sales tax using the environment variable "TAXRATE" 
